@@ -7,9 +7,11 @@ The files in this repository were used to configure the network depicted below.
 
 (https://github.com/Dredubb31/AndreWilliamsMainRepository/blob/main/Diagrams/Azure%20Diagram.drawio.png) 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  - firstplaybook.yaml
+  - filebeat-playbook.yml
+  - metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topologu
@@ -31,9 +33,9 @@ Load balancing ensures that the application will be highly available and reliabl
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
 
-- _TODO: What does Filebeat watch for? Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+- What does Filebeat watch for? Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
 
-- _TODO: What does Metricbeat record?_
+- What does Metricbeat record? Metricbeat is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -53,14 +55,14 @@ Only the Jump-Box machine can accept connections from the Internet. Access to th
 - _TODO: Add whitelisted IP addresses_
 
 Machines within the network can only be accessed by Jump-Box.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+- Which machine did you allow to access your ELK VM? Jump-Box; IP address: 40.122.158.164
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.4             |
-|          |                     |                      |
+| Jump Box | No                  | 10.0.0.4             |
+| Elk Serv | No                  | 10.3.0.4             |
 |          |                     |                      |
 
 ### Elk Configuration
@@ -85,7 +87,9 @@ We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat is a lightweight shipper for forwarding and centralizing log data. It monitors the log files or locations that you specify, collects log events, and forwards them to either Elasticsearch or Logstash for indexing.
+
+- Metricbeat is a lightweight shipper that can be installed on a server to periodically collect metrics from the operating system and from services running on the server. It takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
