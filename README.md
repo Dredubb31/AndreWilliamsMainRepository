@@ -64,12 +64,13 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | No                  | Workstation Public IP via port TCP 5601  
+| Jump Box | No                  | Workstation Public IP 
+                                   via port TCP 5601  
            |
 | Elk Serv | No                  | 10.3.0.4             |
 |  Web1    | No                  | 10.0.0.7             |
 |  Web2    | No                  | 10.0.0.8             |
-| Load Bal
+| Load Bal |
 
 
 ### Elk Configuration
