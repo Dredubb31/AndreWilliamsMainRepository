@@ -40,14 +40,13 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Elk Serv | Logging  | 10.3.0.4   | Linux            |
-| Web 1    | Https    | 10.0.0.7   | Linux            |
-| Web 2    | Https    | 10.0.0.8   | Linux            |
-| Load     |
-| Balancer |
+| Name         | Function     | IP Address             | Operating System |
+|--------------|--------------|------------------------|------------------|
+| Jump Box     | Gateway      | 10.0.0.4/40.122.158.164| Linux            |
+| Elk          | Elk Server   | 10.3.0.4/40.121.38.94  | Linux            |
+| Web 1        | Https        | 10.0.0.7               | Linux            |
+| Web 2        | Https        | 10.0.0.8               | Linux            |
+| Load Balancer| Load Balancer| 13.89.57.194           | Linux            |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -62,15 +61,13 @@ Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | No                  | Workstation Public IP 
-                                   via port TCP 5601  
-           |
-| Elk Serv | No                  | 10.3.0.4             |
-|  Web1    | No                  | 10.0.0.7             |
-|  Web2    | No                  | 10.0.0.8             |
-| Load Bal |
+| Name          | Publicly Accessible | Allowed IP Addresses                         |
+|---------------|---------------------|----------------------------------------------|
+| Jump Box      | No                  | Work station Public IP using  TCP 5601Port 22|
+| Elk Serv      | No                  | Work station Public IP using  TCP 5601Port 22|                                    | 
+|  Web1         | No                  | 10.0.0.7 on SSH 22                           |
+|  Web2         | No                  | 10.0.0.8 on SSH 22                           |
+| Load Balancer | No                  | Work station Public IP on HTTP 80            |
 
 
 ### Elk Configuration
