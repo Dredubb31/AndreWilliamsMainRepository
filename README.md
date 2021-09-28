@@ -46,24 +46,31 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Elk Serv | Logging  | 10.3.0.4   | Linux            |
 | Web 1    | Https    | 10.0.0.7   | Linux            |
 | Web 2    | Https    | 10.0.0.8   | Linux            |
-
+| Load     |
+| Balancer |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Elk Server can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- Workstation Public IP through TCP 5601
 
-Machines within the network can only be accessed by Jump-Box.
-- Which machine did you allow to access your ELK VM? Jump-Box; IP address: 40.122.158.164
+Machines within the network can only be accessed by Workstation and Jump-Box-Provisioner. Which machine did you allow to access your ELK VM? What was its IP address?
+
+Jump-Box-Provisioner IP : 10.0.0.4 via SSH port 22
+Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | No                  | 10.0.0.4             |
+| Jump Box | No                  | Workstation Public IP via port TCP 5601  
+           |
 | Elk Serv | No                  | 10.3.0.4             |
-|          |                     |                      |
+|  Web1    | No                  | 10.0.0.7             |
+|  Web2    | No                  | 10.0.0.8             |
+| Load Bal
+
 
 ### Elk Configuration
 
@@ -77,14 +84,15 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+(Ansible/Sudo Docker PS Screenshot.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- Web 1 & 2 @ 13.89.57.194
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Metricbeat
+- Filebeat
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat is a lightweight shipper for forwarding and centralizing log data. It monitors the log files or locations that you specify, collects log events, and forwards them to either Elasticsearch or Logstash for indexing.
@@ -95,13 +103,64 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the firstplaybook.yaml file to installelk.yaml.
+- Update the installelk.yaml file to include
+---
+- name: Configure Elk VM with Docker
+  hosts: elk
+  remote_user: azadmin
+  become: true
+  tasks:
+    # Use apt module
+    - name: Install docker.io
+      apt:
+        update_cache: yes
+        name: docker.io
+        state: present
+
+      # Use apt module
+    - name: Install pip3
+      apt:
+        force_apt_get: yes
+        name: python3-pip
+        state: present
+
+      # Use pip module
+    - name: Install Docker python module
+      pip:
+        name: docker
+        state: present
+
+      # Use sysctl module
+    - name: Use more memory
+      sysctl:
+        name: vm.max_map_count
+        value: "262144"
+        state: present
+        reload: yes
+
+      # Use docker_container module
+    - name: download and launch a docker elk container
+      docker_container:
+        name: elk
+        image: sebp/elk:761
+        state: started
+        restart_policy: always
+        published_ports:
+          - 5601:5601
+          - 9200:9200
+          - 5044:5044
+
+      # Use systemd module
+    - name: Enable service docker on boot
+      systemd:
+        name: docker
+        enabled: yes
+- Run the playbook, and navigate to ssh elkadmin@<vmipaddress>  and sudo docker ps to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- _Which file is the playbook? [firstplaybook.yaml] Where do you copy it? nano firstplaybook.yaml
+- _Which file do you update to make Ansible run the playbook on a specific machine? cd /etc/ansible/hosts. How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- _Which URL do you navigate to in order to check that the ELK server is running? http://40.121.38.94:5601/app/kibana#/home
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
