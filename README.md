@@ -86,7 +86,7 @@ A summary of the access policies in place can be found in the table below.
 | Name          | Publicly Accessible | Allowed IP Addresses                         |
 |---------------|---------------------|----------------------------------------------|
 | Jump Box      | No                  | Work station Public IP using  TCP 5601Port 22|
-| Elk Serv      | No                  | Work station Public IP using  TCP 5601Port 22|                                    | 
+| Elk Serv      | No                  | Work station Public IP using  TCP 5601Port 22|                                    
 |  Web1         | No                  | 10.0.0.7 on SSH 22                           |
 |  Web2         | No                  | 10.0.0.8 on SSH 22                           |
 | Load Balancer | No                  | Work station Public IP on HTTP 80            |
