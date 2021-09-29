@@ -286,8 +286,9 @@ Where: hosts: ["10.3.0.4:9200"] is the ELK VM that can install Filebeat
 
 How to Copy the raw Metricbeat Module Configuration from web to the /etc/ansible/files/ directory:
 
-  -`curl -L -O https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat >   /etc/ansible/files/metricbeat-config.yml'
-   - Note : the metricbeat-config.yml as our metricbeat configuration file. ```
+   -`curl -L -O https://github.com/Dredubb31/AndreWilliamsMainRepository. > gitAnsible/Raw Metricbeat-config.yml
+  
+      - Note : the metricbeat-config.yml as our metricbeat configuration file. ```
 
 See the final solution of the Metricbeat Config file
 
