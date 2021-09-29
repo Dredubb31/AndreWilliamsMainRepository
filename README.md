@@ -122,7 +122,7 @@ Launching and Exposing the container with these published ports:
  
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-(Ansible/Sudo Docker PS Screenshot.png)
+(Diagrams/Sudo Docker PS Screenshot.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
