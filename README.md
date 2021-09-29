@@ -270,10 +270,9 @@ Where: [elk] is the Virtual Machine hosts or the group of machine targetted for 
 
 How to Copy the raw Filebeat Module Configuration file from web to the /etc/ansible/files directory:
 
-  - `curl -L -O 
-    https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml'
+    - `curl -L -O https://github.com/Dredubb31/AndreWilliamsMainRepository.git > Ansible/Raw Filebeat-config.yml
     
-    - Note : The filebeat-config.yml as our filebeat configuration file.
+      - Note : The filebeat-config.yml as our filebeat configuration file.
 
 See the final solution of the Filebeat Config file
 
