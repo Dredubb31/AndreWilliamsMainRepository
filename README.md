@@ -157,7 +157,7 @@ For FILEBEAT:
 
 Download Filebeat playbook usng this command:
     - curl -L -O 
-     https://github.com/Dredubb31/AndreWilliamsMainRepository.git > 
+     https://github.com/Dredubb31/AndreWilliamsMainRepository.git > Ansible/Filebeat-playbook.yml
 
  - Copy the '/etc/ansible/files/filebeat-config.yml' file to '/etc/filebeat/filebeat-playbook.yml'
  - Update the filebeat-playbook.yml file to include installer
@@ -180,7 +180,7 @@ For METRICBEAT:
 
   - Download Metricbeat playbook using this command:
       - curl -L -O 
-        https://github.com/flyrcs/Azure-Virtual-Network-with-ELK-Deployment/blob/master/README.md#:~:text=curl%20-L%20-O-,https%3A//gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat%20%3E%20/etc/ansible/files/metricbeat-config.yml,-Copy%20the%20/etc
+          https://github.com/Dredubb31/AndreWilliamsMainRepository.git > Ansible/Metricbeat-playbook.yml
       
   - Copy the /etc/ansible/files/metricbeat file to /etc/metricbeat/metricbeat-playbook.yml
   - Update the filebeat-playbook.yml file to include installer
