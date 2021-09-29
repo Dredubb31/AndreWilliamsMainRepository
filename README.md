@@ -214,15 +214,15 @@ How to get the Metricbeat installer:
   
 Which file is the playbook? Where do you copy it?
 
-  Answer : For the ANSIBLE : We will create the my-playbook1.yml as our playbook.
+ - Answer : For the ANSIBLE : We will create the my-playbook1.yml as our playbook.
 
 See the final solution of the Ansible Playbook
 
-  Answer : For FILEBEAT: We will create filbeat-playbook.yml as our playbook.
+ - Answer : For FILEBEAT: We will create filbeat-playbook.yml as our playbook.
 
 See the final solution of the Filebeat Playbook
 
-  Answer: For METRICBEAT: We will create metricbeat-playbook.yml as our playbook.
+ - Answer: For METRICBEAT: We will create metricbeat-playbook.yml as our playbook.
 
 See the final solution of the Metricbeat Playbook
 
