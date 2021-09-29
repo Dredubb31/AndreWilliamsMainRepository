@@ -9,9 +9,31 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - firstplaybook.yaml
-  - filebeat-playbook.yml
-  - metricbeat-playbook.yml
+Ansible Files <https://github.com/Dredubb31/AndreWilliamsMainRepository.git>
+  - Ansible Playbook
+  - Ansible Hosts
+  - Ansible Configuration
+  - Ansible Elk Installation and VM Configuration
+  - Ansible Filebeat Playbook
+  - Ansible Filebeat Configuration
+  - Ansible Mtericbeat Playbook
+  - Ansible Metricbeat Configuration 
+
+Download the ansible.cfg configuration file on this website https://ansible.com/ and edit or copy Ansible Configuration to your /etc/ansible directory
+
+For ansible.cfg edit:
+cd /etc/ansible/	
+nano ansible.cfg
+CTRL + W > enter remote_user
+change `remote_user = sysadmin`
+Assign username and SSH Public Key for Web1, Web2, ELK Virtual Machine in Azure GUI
+
+Web1 / Web2 / ELK Server > Reset Password > Reset SSH Public Key
+  username: sysadmin
+  SSH Key : copy id_rsa.pub from the ansible control node in .ssh/ directory. 
+To get the SSH Key run this command:
+~/.ssh# ssh-keygen
+~/.ssh# cat id_rsa.pub
 
 This document contains the following details:
 - Description of the Topologu
@@ -56,8 +78,8 @@ Only the Elk Server can accept connections from the Internet. Access to this mac
 
 Machines within the network can only be accessed by Workstation and Jump-Box-Provisioner. Which machine did you allow to access your ELK VM? What was its IP address?
 
-Jump-Box-Provisioner IP : 10.0.0.4 via SSH port 22
-Workstation Public IP via port TCP 5601
+  - Jump-Box-Provisioner IP : 10.0.0.4 via SSH port 22
+  - Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
@@ -76,10 +98,28 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - Ansible allows one to optimize the process in such a way to where it will not waste time repeating the same step, and it improves the overall efficiency of the system.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
-
+- _Specify a different group of machines as well as a different remote user
+  - name: Config elk VM with Docker
+    hosts: elk
+    remote_user: sysadmin
+    become: true
+    tasks:
+Increase System Memory :
+ - name: Use more memory
+  sysctl:
+    name: vm.max_map_count
+    value: '262144'
+    state: present
+    reload: yes
+Install the following services:
+   `docker.io`
+   `python3-pip`
+   `docker`, which is the Docker Python pip module.
+Launching and Exposing the container with these published ports:
+ `5601:5601` 
+ `9200:9200`
+ `5044:5044`
+ 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 (Ansible/Sudo Docker PS Screenshot.png)
