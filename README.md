@@ -306,15 +306,4 @@ Where: hosts: ["10.3.0.4:9200"] is the ELK VM that can install Metricbeat
 
 Other Linux Command List :
 
-COMMAND ----------------------------------------|PURPOSE -----------------------------------
-sudo apt-get update	                            |this will update all packages             |
-sudo apt install docker.io	                    |install docker application                |
-sudo service docker start	                      |start the docker application              |
-systemctl status docker	                        |status of the docker application          |
-sudo docker pull cyberxsecurity/ansible	        |download the docker file                  |
-sudo docker run -ti cyberxsecurity/ansible bash	|run and create a docker image             |
-sudo docker start <image-name>	                |starts the image specified                |
-sudo docker ps -a	                              |list all active/inactive containers       |
-sudo docker attach <image-name>	                |effectively sshing into the ansible       |  
-ssh-keygen	                                    |create a ssh key                          |
-ansible -m ping all	                            |check the connection of ansible containers|
+https://phoenixnap.com/kb/wp-content/uploads/2021/04/Docker-commands-cheat-sheet-by-PhoenixNAP-scaled.jpg
